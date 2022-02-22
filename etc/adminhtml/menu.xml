@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Marketplacer_Seller::manage"
+             title="Marketplacer Sellers"
+             translate="title"
+             module="Marketplacer_Seller"
+             action="marketplacer/seller/index"
+             sortOrder="20"
+             parent="Marketplacer_Base::marketplacer"
+             resource="Marketplacer_Seller::seller"/>
+    </menu>
+</config>

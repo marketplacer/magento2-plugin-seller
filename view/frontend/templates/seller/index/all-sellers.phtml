@@ -1,0 +1,65 @@
+<?php
+/**
+ * @var $block Index
+ * @var $imageHelper Image
+ * @var $urlHelper Url
+ * @var $viewModel BaseViewModel
+ * @var $escaper Escaper
+ */
+
+use Magento\Framework\Escaper;
+use Marketplacer\Base\Helper\Image;
+use Marketplacer\Base\ViewModel\BaseViewModel;
+use Marketplacer\Seller\Api\Data\SellerInterface;
+use Marketplacer\Seller\Block\Seller\Index;
+use Marketplacer\Seller\Helper\Url;
+
+$viewModel = $block->getViewModel();
+$escaper = $escaper ?? $viewModel->getEscaper();
+
+$imageHelper = $this->helper('Marketplacer\Base\Helper\Image');
+$urlHelper = $this->helper('Marketplacer\Seller\Helper\Url');
+
+$sellers = $block->getAllDisplayedSellers();
+?>
+
+<?php if ($sellers): ?>
+    <section class="mrkt-sellers-list-wrapper">
+        <ul class="mrkt-sellers-list">
+            <?php /** @var $seller SellerInterface */ ?>
+            <?php foreach ($sellers as $seller): ?>
+                <?php
+                $sellerUrl = $urlHelper->getSellerUrl($seller);
+                $sellerLabel = $seller->getName();
+                $sellerLogoSrc = $seller->getLogo();
+                if (!$sellerLogoSrc) {
+                    $sellerLogoSrc = $imageHelper->init($seller, 'image')->resize(200, 200)->getUrl();
+                }
+                ?>
+                <li class="item">
+                    <div class="mrkt-sellers-item" itemscope itemtype="http://schema.org/Store">
+                        <?php if ($sellerLogoSrc): ?>
+                            <a class="image"
+                               href="<?= $escaper->escapeUrl($sellerUrl); ?>"
+                               title="<?= $escaper->escapeHtmlAttr($sellerLabel); ?>">
+                                <img src="<?= $escaper->escapeUrl($sellerLogoSrc); ?>"
+                                     alt="<?= $escaper->escapeHtmlAttr($sellerLabel); ?>"
+                                     itemprop="logo"/>
+                            </a>
+                        <?php endif; ?>
+                        <h3 class="name">
+                            <a href="<?= $escaper->escapeUrl($sellerUrl); ?>"
+                               title="<?= $escaper->escapeHtmlAttr($sellerLabel) ?>"
+                               itemprop="url">
+                                <span itemprop="name"><?= $escaper->escapeHtml($sellerLabel); ?></span>
+                            </a>
+                        </h3>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
+<?php else: ?>
+    <div class="message info empty"><span><?= $escaper->escapeHtml(__('There are no sellers available.')); ?></span>
+    </div>
+<?php endif ?>

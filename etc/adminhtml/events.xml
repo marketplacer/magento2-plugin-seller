@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_changed_section_marketplacer_seller">
+        <observer name="marketplacer_seller_url_regenerate" instance="Marketplacer\Seller\Observer\Adminhtml\Config\SystemConfigUpdateAfterRefreshUrlRewrites"/>
+        <observer name="marketplacer_seller_update_general_seller" instance="Marketplacer\Seller\Observer\Adminhtml\Config\SystemConfigUpdateAfterUpdateGeneralSeller"/>
+    </event>
+</config>

@@ -1,0 +1,79 @@
+<?php
+/**
+ * @var $block View
+ * @var $viewModel BaseViewModel
+ * @var $escaper Escaper
+ */
+
+use Magento\Framework\Escaper;
+use Marketplacer\Base\ViewModel\BaseViewModel;
+use Marketplacer\Seller\Block\Seller\View;
+
+$viewModel = $block->getViewModel();
+$escaper = $escaper ?? $viewModel->getEscaper();
+
+$seller = $block->getCurrentSeller();
+?>
+<section class="mrkt-seller-top-info" itemscope itemtype="http://schema.org/Store">
+    <?php if ($sellerImageSrc = $seller->getStoreImage()): ?>
+        <div class="image">
+            <img src="<?= $escaper->escapeUrl($sellerImageSrc) ?>"
+                 alt="<?= $escaper->escapeHtmlAttr($seller->getName()) ?>"
+                 itemprop="image"/>
+        </div>
+    <?php endif; ?>
+    <div class="info">
+        <?php if ($sellerLogoSrc = $seller->getLogo()): ?>
+            <div class="mrkt-seller-logo">
+                <img src="<?= $escaper->escapeUrl($sellerLogoSrc) ?>"
+                     alt="<?= $escaper->escapeHtmlAttr($seller->getName()); ?>"
+                     itemprop="logo"/>
+            </div>
+        <?php endif; ?>
+        <?= $block->getChildHtml('title') ?>
+        <?php if ($_description = $seller->getDescription()): ?>
+            <div class="mrkt-seller-description" itemprop="description">
+                <?= /* @noEscape */
+                $_description ?>
+            </div>
+        <?php endif; ?>
+        <dl class="mrkt-seller-desc-list">
+            <?php if ($sellerAddress = $seller->getAddress()): ?>
+                <dt><?= $escaper->escapeHtml(__('Address')) ?></dt>
+                <dd itemprop="address">
+                    <?= $escaper->escapeHtml($sellerAddress) ?>
+                </dd>
+            <?php endif; ?>
+            <?php if ($sellerOpeningHours = $seller->getOpeningHours()): ?>
+                <dt><?= $escaper->escapeHtml(__('Opening Hours')) ?></dt>
+                <dd itemprop="openingHours">
+                    <?= $escaper->escapeHtml($sellerOpeningHours) ?>
+                </dd>
+            <?php endif; ?>
+            <?php if ($sellerEmail = $seller->getEmailAddress()): ?>
+                <dt><?= $escaper->escapeHtml(__('Email Address')) ?></dt>
+                <dd itemprop="email">
+                    <?= $escaper->escapeHtml($sellerEmail) ?>
+                </dd>
+            <?php endif; ?>
+            <?php if ($sellerPhone = $seller->getPhone()): ?>
+                <dt><?= $escaper->escapeHtml(__('Phone')) ?></dt>
+                <dd itemprop="telephone">
+                    <?= $escaper->escapeHtml($sellerPhone) ?>
+                </dd>
+            <?php endif; ?>
+            <?php if ($sellerBusinessNumber = $seller->getBusinessNumber()): ?>
+                <dt><?= $escaper->escapeHtml(__('Business Number')) ?></dt>
+                <dd><?= $escaper->escapeHtml($sellerBusinessNumber) ?></dd>
+            <?php endif; ?>
+            <?php if ($sellerPolicies = $seller->getPolicies()): ?>
+                <dt><?= $escaper->escapeHtml(__('Policies')) ?></dt>
+                <dd>
+                    <a href="<?= $escaper->escapeUrl($sellerPolicies) ?>" target="_blank">
+                        <?= $escaper->escapeHtml(__('link')) ?>
+                    </a>
+                </dd>
+            <?php endif; ?>
+        </dl>
+    </div>
+</section>

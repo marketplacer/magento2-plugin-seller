@@ -1,0 +1,59 @@
+//
+//  Marketplacer - Sellers: Sellers List Item
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-sellers-item__display: block;
+@mrkt-sellers-item__text-align: center;
+
+@mrkt-sellers-item-image__display: block;
+@mrkt-sellers-item-image__padding-top: 60%;
+@mrkt-sellers-item-image__position: relative;
+
+@mrkt-sellers-item-img__display: block;
+@mrkt-sellers-item-img__max-width: 100%;
+@mrkt-sellers-item-img__max-height: 100%;
+@mrkt-sellers-item-img__position: absolute;
+@mrkt-sellers-item-img__top: 50%;
+@mrkt-sellers-item-img__left: 50%;
+@mrkt-sellers-item-img__transform: translate(-50%, -50%);
+
+@mrkt-sellers-item-name__display: block;
+@mrkt-sellers-item-name__margin: 10px 0 0;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-sellers-item {
+        & {
+            .lib-css(display, @mrkt-sellers-item__display);
+            .lib-css(text-align, @mrkt-sellers-item__text-align);
+        }
+
+        > .image {
+            .lib-css(display, @mrkt-sellers-item-image__display);
+            .lib-css(padding-top, @mrkt-sellers-item-image__padding-top);
+            .lib-css(position, @mrkt-sellers-item-image__position);
+        }
+
+        > .image > img {
+            .lib-css(display, @mrkt-sellers-item-img__display);
+            .lib-css(max-width, @mrkt-sellers-item-img__max-width);
+            .lib-css(max-height, @mrkt-sellers-item-img__max-height);
+            .lib-css(position, @mrkt-sellers-item-img__position);
+            .lib-css(top, @mrkt-sellers-item-img__top);
+            .lib-css(left, @mrkt-sellers-item-img__left);
+            .lib-css(transform, @mrkt-sellers-item-img__transform);
+        }
+
+        > .name {
+            .lib-css(display, @mrkt-sellers-item-name__display);
+            .lib-css(margin, @mrkt-sellers-item-name__margin);
+        }
+    }
+}

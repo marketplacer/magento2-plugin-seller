@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="marketplacer_seller">
+        <column xsi:type="int" name="row_id" unsigned="true" nullable="false" identity="true" comment="Row Id"/>
+        <column xsi:type="int" name="seller_id" nullable="false" comment="Seller Id"/>
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false" default="0" comment="Store ID"/>
+        <column xsi:type="int" name="option_id" nullable="false" comment="Seller Attribute Option Id"/>
+        <column xsi:type="smallint" name="status" nullable="false" default="1" comment="Seller Status"/>
+        <!-- Seller payload fields -->
+        <column xsi:type="varchar" name="store_image" nullable="true" length="1000" comment="Seller store image"/>
+        <column xsi:type="varchar" name="logo" nullable="true" length="1000" comment="Seller Logo Image"/>
+        <column xsi:type="varchar" name="email_address" nullable="true" length="1000" comment="Seller email address"/>
+        <column xsi:type="varchar" name="phone" nullable="true" length="255" comment="Seller Phone"/>
+        <column xsi:type="varchar" name="address" nullable="true" length="1000" comment="Seller Address"/>
+        <column xsi:type="text" name="description" nullable="true" comment="Seller Description"/>
+        <column xsi:type="varchar" name="opening_hours" nullable="true" length="1000" comment="Seller Opening hours"/>
+        <column xsi:type="varchar" name="business_number" nullable="true" length="255" comment="Seller Business number"/>
+        <column xsi:type="varchar" name="policies" nullable="true" length="1000" comment="Seller Policies"/>
+        <column xsi:type="varchar" name="shipping_policy" nullable="true" length="1000" comment="Seller Shipping policy"/>
+        <!-- SEO columns -->
+        <column xsi:type="varchar" name="url_key" nullable="true" length="255" comment="Seller Names"/>
+        <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Seller Names"/>
+        <column xsi:type="varchar" name="meta_description" nullable="true" length="255" comment="Seller Names"/>
+        <!-- Service columns -->
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="Created At"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="Updated At"/>
+        <!-- Indices -->
+        <index referenceId="MARKETPLACER_SELLER_OPTION_ID_STORE_ID_INDEX" indexType="btree">
+            <column name="seller_id"/>
+            <column name="store_id"/>
+        </index>
+        <!-- Constraints -->
+        <constraint xsi:type="primary" referenceId="MARKETPLACER_SELLER_ROW_ID">
+            <column name="row_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="MARKETPLACER_SELLER_OPTION_ID_STORE_ID_CONSTRAINT">
+            <column name="store_id"/>
+            <column name="seller_id"/>
+        </constraint>
+    </table>
+</schema>

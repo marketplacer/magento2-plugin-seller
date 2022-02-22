@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Marketplacer\SellerApi\Api\Data\MarketplacerSellerInterface" type="Marketplacer\Seller\Model\Seller"/>
+    <preference for="Marketplacer\SellerApi\Api\SellerRepositoryInterface" type="Marketplacer\Seller\Model\SellerRepository"/>
+    <preference for="Marketplacer\SellerApi\Api\MarketplacerSellerUrlInterface" type="Marketplacer\Seller\Model\SellerUrl"/>
+
+    <preference for="Marketplacer\Seller\Api\Data\SellerInterface" type="Marketplacer\Seller\Model\Seller"/>
+    <preference for="Marketplacer\Seller\Api\SellerRepositoryInterface" type="Marketplacer\Seller\Model\SellerRepository"/>
+    <preference for="Marketplacer\Seller\Api\Data\SellerCollectionInterface" type="Marketplacer\Seller\Model\ResourceModel\Seller\Collection"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="marketplacer_seller_listing_data_source" xsi:type="string">Marketplacer\Seller\Model\ResourceModel\Seller\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Catalog\Model\Layer\Resolver">
+        <arguments>
+            <argument name="layersPool" xsi:type="array">
+                <item name="seller_category_layer" xsi:type="string">Marketplacer\Seller\Model\Layer\Seller</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+        <arguments>
+            <argument name="itemProviders" xsi:type="array">
+                <item name="sellerProvider" xsi:type="object">Marketplacer\Seller\Model\Sitemap\ItemProvider\Seller</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,104 @@
+//
+//  Marketplacer - Seller: Seller Top Info
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-seller-top-info-image__display: none;
+
+@mrkt-seller-top-info-seller-logo__margin-bottom: 20px;
+@mrkt-seller-top-info-seller-logo__max-width: 300px;
+@mrkt-seller-top-info-seller-logo__max-height: 70px;
+
+@mrkt-seller-top-info__display-m: flex;
+@mrkt-seller-top-info-info__width-m: 100%;
+@mrkt-seller-top-info-image__order-m: 1;
+@mrkt-seller-top-info-image__flex-grow-m: 1;
+@mrkt-seller-top-info-image__display-m: flex;
+@mrkt-seller-top-info-image__align-items-m: center;
+@mrkt-seller-top-info-image__padding-left-m: 20px;
+@mrkt-seller-top-info-image-info__width-m: 60%;
+@mrkt-seller-top-info-img__margin-m: auto;
+
+@mrkt-seller-top-info-info__width-l: 50%;
+
+@mrkt-seller-top-info-info__width-xl: 40%;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-seller-top-info {
+        > .image {
+            .lib-css(display, @mrkt-seller-top-info-image__display);
+        }
+
+        .mrkt-seller-logo {
+            .lib-css(margin-bottom, @mrkt-seller-top-info-seller-logo__margin-bottom);
+        }
+
+        .mrkt-seller-logo img {
+            .lib-css(max-width, @mrkt-seller-top-info-seller-logo__max-width);
+            .lib-css(max-height, @mrkt-seller-top-info-seller-logo__max-height);
+        }
+    }
+}
+
+//
+//  M +
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .mrkt-seller-top-info {
+        & {
+            .lib-vendor-prefix-display(@mrkt-seller-top-info__display-m);
+        }
+
+        > .info {
+            .lib-css(width, @mrkt-seller-top-info-info__width-m);
+        }
+
+        > .image {
+            .lib-vendor-prefix-order(@mrkt-seller-top-info-image__order-m);
+            .lib-vendor-prefix-flex-grow(@mrkt-seller-top-info-image__flex-grow-m);
+            .lib-vendor-prefix-display(@mrkt-seller-top-info-image__display-m);
+            .lib-vendor-box-align(@mrkt-seller-top-info-image__align-items-m);
+            .lib-css(padding-left, @mrkt-seller-top-info-image__padding-left-m);
+        }
+
+        > .image + .info {
+            .lib-css(width, @mrkt-seller-top-info-image-info__width-m);
+        }
+
+        > .image > img {
+            .lib-css(margin, @mrkt-seller-top-info-img__margin-m);
+        }
+    }
+}
+
+//
+//  L +
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .mrkt-seller-top-info {
+        > .image + .info {
+            .lib-css(width, @mrkt-seller-top-info-info__width-l);
+        }
+    }
+}
+
+//
+//  XL +
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .mrkt-seller-top-info {
+        > .image + .info {
+            .lib-css(width, @mrkt-seller-top-info-info__width-xl);
+        }
+    }
+}

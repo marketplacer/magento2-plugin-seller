@@ -1,0 +1,23 @@
+//
+//  Marketplacer - Seller: PDP Seller Info block
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-product-info-seller-img__max-width: 200px;
+@mrkt-product-info-seller-img__max-height: 50px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-product-info-seller {
+        > .image img {
+            .lib-css(max-width, @mrkt-product-info-seller-img__max-width);
+            .lib-css(max-height, @mrkt-product-info-seller-img__max-height);
+        }
+    }
+}

@@ -1,0 +1,29 @@
+<?php
+/**
+ * @var $block Template
+ * @var $sellerDataHelper Data
+ * @var $sellerEntity SellerInterface
+ * @var $escaper Escaper
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+use Marketplacer\Seller\Api\Data\SellerInterface;
+use Marketplacer\Seller\Helper\Data;
+
+$product = $block->getItem()->getProduct();
+$sellerDataHelper = $this->helper(Data::class);
+$sellerEntity = $sellerDataHelper->getSellerByProduct($product);
+
+if (!$sellerEntity instanceof SellerInterface) {
+    return;
+}
+
+$sellerShippingPolicy = $sellerEntity->getShippingPolicy();
+if (!$sellerShippingPolicy) {
+    return;
+}
+?>
+<div class="mrkt-seller-shipping-policy">
+    <?= $escaper->escapeHtml($sellerShippingPolicy, ['a']) ?>
+</div>

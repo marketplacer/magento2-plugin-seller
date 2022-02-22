@@ -1,0 +1,39 @@
+//
+//  Marketplacer - Seller: Seller Description List
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-seller-desc-list__margin-top: 20px;
+
+@mrkt-seller-desc-list-dt-after__content: ':';
+@mrkt-seller-desc-list-dt-after__margin-right: 4px;
+
+@mrkt-seller-desc-list-dt__clear: both;
+@mrkt-seller-desc-list-dt__float: left;
+@mrkt-seller-desc-list-dt__margin: 0;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-seller-desc-list {
+        &:not(:first-child) {
+            .lib-css(margin-top, @mrkt-seller-desc-list__margin-top);
+        }
+
+        > dt::after {
+            .lib-css(content, @mrkt-seller-desc-list-dt-after__content);
+            .lib-css(margin-right, @mrkt-seller-desc-list-dt-after__margin-right);
+        }
+
+        > dt {
+            .lib-css(clear, @mrkt-seller-desc-list-dt__clear);
+            .lib-css(float, @mrkt-seller-desc-list-dt__float);
+            .lib-css(margin, @mrkt-seller-desc-list-dt__margin);
+        }
+    }
+}

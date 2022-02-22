@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="catalog_category_view"/>
+    <update handle="catalog_category_view_type_layered"/>
+    <body>
+        <attribute name="class" value="page-products"/>
+
+        <referenceContainer name="columns.top">
+            <container name="seller.info.view.container" htmlTag="div" htmlClass="seller-info-container" after="-">
+                <block class="Marketplacer\Seller\Block\Seller\View"
+                       name="seller.info.view.top"
+                       template="Marketplacer_Seller::seller/view/top/seller-details.phtml"
+                       ifconfig="marketplacer_seller/general/enabled">
+                    <arguments>
+                        <argument name="view_model" xsi:type="object">Marketplacer\Base\ViewModel\BaseViewModel</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="page.main.title">
+            <arguments>
+                <argument name="add_base_attribute" xsi:type="string">itemprop="name"</argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="category.view.container" remove="true"/>
+
+        <move element="page.main.title" destination="seller.info.view.top" as="title"/>
+    </body>
+</page>

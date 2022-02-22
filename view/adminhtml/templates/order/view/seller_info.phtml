@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var $block Marketplacer\Seller\Block\Adminhtml\Order\View
+ */
+$order = $block->getOrder();
+$orderSellerName = $order->getSellerNames();
+if (empty($orderSellerName)) {
+    return null;
+}
+?>
+<tr>
+    <th><?= $block->escapeHtml(__('Seller')); ?></th>
+    <td>
+        <?= $block->escapeHtml($orderSellerName); ?>
+    </td>
+</tr>

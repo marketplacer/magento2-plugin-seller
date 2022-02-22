@@ -1,0 +1,40 @@
+//
+//  Marketplacer - Seller: PLP - product cell - seller row
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+@mrkt-product-item-seller__display: flex;
+@mrkt-product-item-seller__align-items: center;
+@mrkt-product-item-seller__margin-bottom: @indent__xs;
+
+@mrkt-product-item-seller-image__margin-left: @indent__xs;
+
+@mrkt-product-item-seller-img__display: block;
+@mrkt-product-item-seller-img__max-width: 60px;
+@mrkt-product-item-seller-img__max-height: 25px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-product-item-seller {
+        & {
+            .lib-vendor-prefix-display(@mrkt-product-item-seller__display);
+            .lib-vendor-box-align(@mrkt-product-item-seller__align-items);
+            .lib-css(margin-bottom, @mrkt-product-item-seller__margin-bottom);
+        }
+
+        > .name + .image {
+            .lib-css(margin-left, @mrkt-product-item-seller-image__margin-left);
+        }
+
+        > .image img {
+            .lib-css(display, @mrkt-product-item-seller-img__display);
+            .lib-css(max-width, @mrkt-product-item-seller-img__max-width);
+            .lib-css(max-height, @mrkt-product-item-seller-img__max-height);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+//
+//  Marketplacer - Seller: Seller Shipping Policy
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-seller-shipping-policy__margin: 20px 0;
+@mrkt-seller-shipping-policy-last-child__margin-bottom: 0;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-seller-shipping-policy {
+        .product-item-details & {
+            .lib-css(margin, @mrkt-seller-shipping-policy__margin);
+        }
+
+        .product-item-details &:last-child {
+            .lib-css(margin-bottom, @mrkt-seller-shipping-policy-last-child__margin-bottom);
+        }
+    }
+}

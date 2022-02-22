@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="marketplacer_seller_delete_before">
+        <observer name="reject_general_seller_deleting" instance="Marketplacer\Seller\Observer\Seller\SellerDeleteBefore"/>
+    </event>
+</config>

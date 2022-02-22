@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="category.product.marketplacer.info">
+        <block class="Magento\Catalog\Block\Product\ProductList\Item\Block"
+               name="category.product.marketplacer.info.seller"
+               template="Marketplacer_Seller::product/list/seller-info.phtml"
+               before="-"
+               ifconfig="marketplacer_seller/general/enabled"/>
+    </referenceBlock>
+</page>

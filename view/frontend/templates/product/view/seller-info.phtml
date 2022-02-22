@@ -1,0 +1,51 @@
+<?php
+/**
+ * @var $block View
+ * @var $sellerDataHelper Data
+ * @var $seller SellerInterface
+ * @var $escaper Escaper
+ */
+
+use Magento\Catalog\Block\Product\View;
+use Magento\Framework\Escaper;
+use Marketplacer\Seller\Api\Data\SellerInterface;
+use Marketplacer\Seller\Helper\Data;
+
+$product = $block->getProduct();
+$sellerDataHelper = $this->helper(Data::class);
+$seller = $sellerDataHelper->getSellerByProduct($product);
+
+if (!$seller instanceof SellerInterface || !$seller->isEnabled()) {
+    return;
+}
+
+$sellerName = $seller->getName();
+$sellerLogo = $seller->getLogo();
+$sellerPolicies = $seller->getPolicies();
+$sellerUrl = $sellerDataHelper->getSellerUrl($seller);
+?>
+
+<div class="mrkt-product-info-seller">
+    <strong class="name">
+        <?php if ($sellerUrl): ?>
+            <a class="name" href="<?= $escaper->escapeUrl($sellerUrl) ?>"
+               title="<?= $escaper->escapeHtmlAttr($sellerName) ?>">
+                <?= $escaper->escapeHtml($sellerName) ?>
+            </a>
+        <?php else: ?>
+            <?= $escaper->escapeHtml($sellerName) ?>
+        <?php endif ?>
+    </strong>
+
+    <?php if ($sellerLogo): ?>
+        <span class="image">
+            <img src="<?= $escaper->escapeUrl($sellerLogo) ?>" alt="<?= $escaper->escapeHtmlAttr($sellerName) ?>"/>
+        </span>
+    <?php endif ?>
+    <br/>
+    <?php if ($sellerPolicies): ?>
+        <a class="policy" href="<?= $escaper->escapeUrl($sellerPolicies) ?>">
+            <?= $escaper->escapeHtml(__('Policies')) ?>
+        </a>
+    <?php endif ?>
+</div>

@@ -1,0 +1,97 @@
+//
+//  Marketplacer - Seller: Sellers List
+//  _____________________________________________
+
+//
+//  Variables
+//  ---------------------------------------------
+
+@mrkt-sellers-list__margin-left: -5px;
+@mrkt-sellers-list__margin-left-m: -10px;
+@mrkt-sellers-list__margin-right: -5px;
+@mrkt-sellers-list__margin-right-m: -10px;
+
+@mrkt-sellers-list-item__width: 50%;
+@mrkt-sellers-list-item__width-xs: 100%;
+@mrkt-sellers-list-item__width-m: 33.3%;
+@mrkt-sellers-list-item__width-l: 25%;
+
+@mrkt-sellers-list-item__padding-left: 5px;
+@mrkt-sellers-list-item__padding-left-m: 10px;
+@mrkt-sellers-list-item__padding-right: 5px;
+@mrkt-sellers-list-item__padding-right-m: 10px;
+@mrkt-sellers-list-item__box-sizing: border-box;
+@mrkt-sellers-list-item__margin-bottom: 20px;
+
+//
+//  Common
+//  ---------------------------------------------
+
+& when (@media-common = true) {
+    .mrkt-sellers-list {
+        ul& {
+            .lib-list-reset-styles();
+        }
+
+        & {
+            .lib-vendor-prefix-display();
+            .lib-vendor-prefix-flex-wrap();
+        }
+
+        &-wrapper > & {
+            .lib-css(margin-left, @mrkt-sellers-list__margin-left);
+            .lib-css(margin-right, @mrkt-sellers-list__margin-right);
+        }
+
+        > .item {
+            .lib-css(width, @mrkt-sellers-list-item__width);
+            .lib-css(padding-left, @mrkt-sellers-list-item__padding-left);
+            .lib-css(padding-right, @mrkt-sellers-list-item__padding-right);
+            .lib-css(box-sizing, @mrkt-sellers-list-item__box-sizing);
+            .lib-css(margin-bottom, @mrkt-sellers-list-item__margin-bottom);
+        }
+    }
+}
+
+//
+//  XS -
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__xs) {
+    .mrkt-sellers-list {
+        > .item {
+            .lib-css(width, @mrkt-sellers-list-item__width-xs);
+        }
+    }
+}
+
+//
+//  M +
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .mrkt-sellers-list {
+        &-wrapper > & {
+            .lib-css(margin-left, @mrkt-sellers-list__margin-left-m);
+            .lib-css(margin-right, @mrkt-sellers-list__margin-right-m);
+        }
+
+        > .item {
+            .lib-css(width, @mrkt-sellers-list-item__width-m);
+            .lib-css(padding-left, @mrkt-sellers-list-item__padding-left-m);
+            .lib-css(padding-right, @mrkt-sellers-list-item__padding-right-m);
+        }
+    }
+}
+
+//
+//  L +
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .mrkt-sellers-list {
+        > .item {
+            .lib-css(width, @mrkt-sellers-list-item__width-l);
+        }
+    }
+}

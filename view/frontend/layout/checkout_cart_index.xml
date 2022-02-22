@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <referenceBlock name="additional.product.info">
+        <block class="Magento\Framework\View\Element\Template"
+               name="additional.product.info.seller.shipping-policy"
+               template="Marketplacer_Seller::cart/additional/shipping-policy.phtml"
+               before="-"/>
+    </referenceBlock>
+</page>

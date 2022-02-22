@@ -1,0 +1,41 @@
+<?php
+/**
+ * @var $block Magento\Catalog\Block\Product\ProductList\Item\Block
+ * @var $sellerDataHelper Data
+ * @var $seller SellerInterface
+ * @var $escaper Escaper
+ */
+
+use Magento\Framework\Escaper;
+use Marketplacer\Seller\Api\Data\SellerInterface;
+use Marketplacer\Seller\Helper\Data;
+
+$product = $block->getProduct();
+$sellerDataHelper = $this->helper(Data::class);
+$seller = $sellerDataHelper->getSellerByProduct($product);
+
+if (!$seller instanceof SellerInterface || !$seller->isEnabled()) {
+    return;
+}
+
+$sellerName = $seller->getName();
+$sellerLogo = $seller->getLogo();
+$sellerUrl = $sellerDataHelper->getSellerUrl($seller);
+?>
+
+<div class="product seller mrkt-product-item-seller">
+    <?php if ($sellerUrl): ?>
+        <a class="name" href="<?= $escaper->escapeUrl($sellerUrl) ?>"
+           title="<?= $escaper->escapeHtmlAttr($sellerName) ?>">
+            <?= $escaper->escapeHtml($sellerName) ?>
+        </a>
+    <?php else: ?>
+        <span class="name"><?= $escaper->escapeHtml($sellerName) ?></span>
+    <?php endif ?>
+
+    <?php if ($sellerLogo): ?>
+        <span class="image">
+            <img src="<?= $escaper->escapeUrl($sellerLogo) ?>" alt="<?= $escaper->escapeHtmlAttr($sellerName) ?>"/>
+        </span>
+    <?php endif; ?>
+</div>
