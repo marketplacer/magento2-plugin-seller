@@ -1,11 +1,11 @@
 {
-    "name": "marketplacer/magento2-plugin-seller",
+    "name": "marketplacer1/magento2-plugin-seller",
     "description": "Package of back-office management and storefront displaying of Marketplacer Sellers",
     "type": "magento2-module",
     "version": "2.0.0",
     "require": {
-        "marketplacer/magento2-plugin-base": "^2.0.0",
-        "marketplacer/magento2-plugin-seller-api": "^2.0.0"
+        "marketplacer1/magento2-plugin-base": "^2.0.0",
+        "marketplacer1/magento2-plugin-seller-api": "^2.0.0"
     },
     "autoload": {
         "files": [
