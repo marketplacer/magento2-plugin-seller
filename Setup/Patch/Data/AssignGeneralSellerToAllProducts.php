@@ -127,7 +127,10 @@ class AssignGeneralSellerToAllProducts implements DataPatchInterface
      */
     public static function getDependencies()
     {
-        return [CreateMarketplacerSellerProductAttribute::class];
+        return [
+            CreateMarketplacerSellerProductAttribute::class,
+            CreateGeneralSellerEntity::class
+        ];
     }
 
     /**
