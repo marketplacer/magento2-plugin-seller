@@ -4,3 +4,11 @@ services:
     image: composer
     volumes:
       - ./:/app
+  commitlint:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      target: commitlint
+    volumes:
+    - ./.git:/app/.git
+    - ./commitlint.config.js:/app/commitlint.config.js
