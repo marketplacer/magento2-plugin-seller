@@ -2,7 +2,6 @@
     "name": "marketplacer/magento2-plugin-seller",
     "description": "Package of back-office management and storefront displaying of Marketplacer Sellers",
     "type": "magento2-module",
-    "version": "2.0.0",
     "license": "proprietary",
     "require": {
         "marketplacer/magento2-plugin-base": "^2.0.0",
