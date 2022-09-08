@@ -143,8 +143,8 @@ class SellerProcessorTest extends TestCase
         );
 
         $this->storageMock->method('replace')->with([$urlRewrite1, $urlRewrite2]);
-
-        $this->sellerProcessor->processSellerUrlRewrites($seller);
+        
+        static::assertEquals(true, $this->sellerProcessor->processSellerUrlRewrites($seller));
     }
 
     public function testProcessSellerUrlRewritesWithMissingSeller()
@@ -185,9 +185,8 @@ class SellerProcessorTest extends TestCase
         ];
         $this->storageMock->method('deleteByData')->with($deletionFilterData);
 
-        $this->sellerProcessor->deleteUrlRewrites($seller, $storeId);
+        static::assertEquals(true, $this->sellerProcessor->deleteUrlRewrites($seller, $storeId));
     }
-
 
     public function testProcessSellerListingUrlRewrites()
     {
@@ -221,6 +220,6 @@ class SellerProcessorTest extends TestCase
 
         $this->storageMock->method('replace')->with([$urlRewrite1, $urlRewrite2]);
 
-        $this->sellerProcessor->processSellerListingUrlRewrites();
+        static::assertEquals(true, $this->sellerProcessor->processSellerListingUrlRewrites());
     }
 }
