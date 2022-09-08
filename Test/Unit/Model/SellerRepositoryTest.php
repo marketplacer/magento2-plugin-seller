@@ -111,6 +111,11 @@ class SellerRepositoryTest extends TestCase
     private $sellerDataToOptionSetter;
 
     /**
+     * @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute&MockObject
+     */
+    private $attributeMock;
+
+    /**
      * {@inheritdoc}
      */
     protected function setUp(): void
@@ -176,6 +181,11 @@ class SellerRepositoryTest extends TestCase
                 'collectionProcessor'        => $this->collectionProcessorMock,
                 'logger'                     => $this->loggerMock,
             ]
+        );
+
+        $this->attributeMock = $this->createPartialMock(
+            \Magento\Catalog\Model\ResourceModel\Eav\Attribute::class,
+            []
         );
     }
 
@@ -577,11 +587,10 @@ class SellerRepositoryTest extends TestCase
         $this->sellerMock->method('getOptionId')->willReturn($optionId);
         $this->collectionMock->method('getFirstItem')->willReturn($this->sellerMock);
 
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
         $this->sellerAttributeRetrieverMock
             ->expects($this->once())
             ->method('getAttribute')
-            ->willReturn($attributeMock);
+            ->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock
             ->expects($this->once())
@@ -611,12 +620,11 @@ class SellerRepositoryTest extends TestCase
 
         $this->sellerMock->method('getRowId')->willReturn(null);
         $this->collectionMock->method('getFirstItem')->willReturn($this->sellerMock);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
+        
         $this->sellerAttributeRetrieverMock
             ->expects($this->never())
             ->method('getAttribute')
-            ->willReturn($attributeMock);
+            ->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock
             ->expects($this->never())
@@ -641,12 +649,11 @@ class SellerRepositoryTest extends TestCase
     public function testIsSellerExistingOptionExist()
     {
         $sellerId = 5;
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
+        
         $this->sellerAttributeRetrieverMock
             ->expects($this->once())
             ->method('getAttribute')
-            ->willReturn($attributeMock);
+            ->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock
             ->expects($this->once())
@@ -663,12 +670,11 @@ class SellerRepositoryTest extends TestCase
     public function testIsSellerMissingOptionExist()
     {
         $sellerId = 5;
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
+        
         $this->sellerAttributeRetrieverMock
             ->expects($this->once())
             ->method('getAttribute')
-            ->willReturn($attributeMock);
+            ->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock
             ->expects($this->once())
@@ -696,9 +702,8 @@ class SellerRepositoryTest extends TestCase
             ->setStoreId($requestedStoreId);
 
         $this->sellerValidatorMock->method('validate')->willReturn(null);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         /** @var \Magento\Eav\Model\Entity\Attribute\Option $option */
         $option = $this->objectManager->getObject(\Magento\Eav\Model\Entity\Attribute\Option::class);
@@ -741,9 +746,8 @@ class SellerRepositoryTest extends TestCase
             ->setStoreId($requestedStoreId);
 
         $this->sellerValidatorMock->method('validate')->willReturn(null);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         /** @var \Magento\Eav\Model\Entity\Attribute\Option $option */
         $option = $this->objectManager->getObject(\Magento\Eav\Model\Entity\Attribute\Option::class);
@@ -783,9 +787,8 @@ class SellerRepositoryTest extends TestCase
             ->setStoreId($requestedStoreId);
 
         $this->sellerValidatorMock->method('validate')->willReturn(null);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         /** @var \Magento\Eav\Model\Entity\Attribute\Option $option */
         $option = $this->objectManager->getObject(\Magento\Eav\Model\Entity\Attribute\Option::class);
@@ -823,9 +826,8 @@ class SellerRepositoryTest extends TestCase
             ->setName($name)
             ->setStoreId($requestedStoreId)
             ->setAttributeOption($option);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock->method('isAttributeOptionIdExist')->willReturn(true);
 
@@ -868,9 +870,8 @@ class SellerRepositoryTest extends TestCase
             ->setName($name)
             ->setStoreId($requestedStoreId)
             ->setAttributeOption($option);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock->method('isAttributeOptionIdExist')->willReturn(true);
 
@@ -911,9 +912,8 @@ class SellerRepositoryTest extends TestCase
             ->setName($name)
             ->setStoreId($requestedStoreId)
             ->setAttributeOption($option);
-
-        $attributeMock = $this->objectManager->getObject(\Magento\Catalog\Model\ResourceModel\Eav\Attribute::class);
-        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($attributeMock);
+        
+        $this->sellerAttributeRetrieverMock->method('getAttribute')->willReturn($this->attributeMock);
 
         $this->attributeOptionHandlerMock->method('isAttributeOptionIdExist')->willReturn(false);
 
