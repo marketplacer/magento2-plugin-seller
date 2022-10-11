@@ -16,7 +16,7 @@ interface SellerInterface extends MarketplacerSellerInterface
 //    public const SELLER_ID = 'seller_id';                   //part of parent MarketplacerSellerInterface
     public const STORE_ID = 'store_id';
     public const OPTION_ID = 'option_id';
-    public const STATUS = 'status';
+//    public const STATUS = 'status';                           //part of parent MarketplacerSellerInterface
     public const SORT_ORDER = 'sort_order';
 //    public const NAME = 'name';                               //part of parent MarketplacerSellerInterface
 //    public const LOGO = 'logo';                               //part of parent MarketplacerSellerInterface
@@ -34,8 +34,8 @@ interface SellerInterface extends MarketplacerSellerInterface
     public const CREATED_AT = 'created_at';
     public const UPDATED_AT = 'updated_at';
 
-    public const STATUS_ENABLED = '1';
-    public const STATUS_DISABLED = '0';
+    public const STATUS_ENABLED = 1;
+    public const STATUS_DISABLED = 0;
 
     public const SELLER_NAME_GENERAL = 'General Seller';
 
@@ -77,19 +77,6 @@ interface SellerInterface extends MarketplacerSellerInterface
      * @return SellerInterface
      */
     public function setOptionId($optionId);
-
-    /**
-     * Get Status
-     *
-     * @return int|null
-     */
-    public function getStatus();
-
-    /**
-     * @param int $status
-     * @return SellerInterface
-     */
-    public function setStatus($status);
 
     /**
      * @return bool

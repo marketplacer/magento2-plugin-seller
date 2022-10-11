@@ -145,24 +145,6 @@ class Seller extends MarketplacerSeller implements SellerInterface
     }
 
     /**
-     * @return int|mixed|null
-     */
-    public function getStatus()
-    {
-        return $this->_getData(SellerInterface::STATUS);
-    }
-
-    /**
-     * @param int $status
-     * @return $this|SellerInterface
-     */
-    public function setStatus($status)
-    {
-        $this->setData(SellerInterface::STATUS, $status);
-        return $this;
-    }
-
-    /**
      * @return bool
      */
     public function isEnabled()
