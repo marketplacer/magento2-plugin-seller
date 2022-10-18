@@ -69,7 +69,17 @@ $seller = $block->getCurrentSeller();
             <?php if ($sellerPolicies = $seller->getPolicies()): ?>
                 <dt><?= $escaper->escapeHtml(__('Policies')) ?></dt>
                 <dd>
-                    <a href="<?= $escaper->escapeUrl($sellerPolicies) ?>" target="_blank">
+                    <div style="display: none;" data-bind="mageInit: {
+                        'Magento_Ui/js/modal/modal':{
+                            'type': 'popup',
+                            'trigger': '[data-trigger=policies]',
+                            'buttons': []
+                        }}">
+                        <div class="content">
+                            <?= $escaper->escapeHtml($sellerPolicies, ['p', 'ul', 'li', 'div']) ?>
+                        </div>
+                    </div>
+                    <a href="#" data-trigger="policies">
                         <?= $escaper->escapeHtml(__('link')) ?>
                     </a>
                 </dd>

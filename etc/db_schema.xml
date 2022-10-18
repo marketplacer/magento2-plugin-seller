@@ -15,7 +15,7 @@
         <column xsi:type="text" name="description" nullable="true" comment="Seller Description"/>
         <column xsi:type="varchar" name="opening_hours" nullable="true" length="1000" comment="Seller Opening hours"/>
         <column xsi:type="varchar" name="business_number" nullable="true" length="255" comment="Seller Business number"/>
-        <column xsi:type="varchar" name="policies" nullable="true" length="1000" comment="Seller Policies"/>
+        <column xsi:type="text" name="policies" nullable="true" comment="Seller Policies"/>
         <column xsi:type="varchar" name="shipping_policy" nullable="true" length="1000" comment="Seller Shipping policy"/>
         <!-- SEO columns -->
         <column xsi:type="varchar" name="url_key" nullable="true" length="255" comment="Seller Names"/>
