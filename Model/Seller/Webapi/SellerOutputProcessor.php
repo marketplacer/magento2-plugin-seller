@@ -19,7 +19,8 @@ class SellerOutputProcessor
         'description',
         'email_address',
         'shipping_policy',
-        'status'
+        'status',
+        'source_code'
     ];
 
     /**
