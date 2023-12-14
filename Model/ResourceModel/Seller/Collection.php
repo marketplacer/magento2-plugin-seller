@@ -13,6 +13,7 @@ use Marketplacer\Base\Model\Attribute\AttributeOptionHandler;
 use Marketplacer\Base\Model\ResourceModel\AbstractCollection;
 use Marketplacer\Seller\Api\Data\SellerCollectionInterface;
 use Marketplacer\Seller\Api\Data\SellerInterface;
+use Marketplacer\SellerApi\Api\Data\MarketplacerSellerInterface;
 use Marketplacer\SellerApi\Api\SellerAttributeRetrieverInterface;
 use Psr\Log\LoggerInterface;
 
@@ -145,6 +146,15 @@ class Collection extends AbstractCollection implements SellerCollectionInterface
     public function addStatusActiveToFilter()
     {
         $this->addStatusToFilter(SellerInterface::STATUS_ENABLED);
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function addSourceIdsToFilter($ids = []): self
+    {
+        $this->addFieldToFilter(MarketplacerSellerInterface::SOURCE_CODE, ['in' => $ids]);
         return $this;
     }
 

@@ -18,6 +18,9 @@
         <column xsi:type="text" name="policies" nullable="true" comment="Seller Policies"/>
         <column xsi:type="varchar" name="shipping_policy" nullable="true" length="1000" comment="Seller Shipping policy"/>
         <column xsi:type="varchar" name="source_code" nullable="false" comment="Seller source code"/>
+
+        <column xsi:type="decimal" name="base_domestic_shipping_cost" scale="2" precision="12" unsigned="false" nullable="false" default="0" comment="Base Domestic Shipping Cost"/>
+        <column xsi:type="decimal" name="base_domestic_shipping_free_threshold" scale="2" precision="12" unsigned="false" nullable="false" default="0" comment="Base Domestic Shipping Free Threshold"/>
         <!-- SEO columns -->
         <column xsi:type="varchar" name="url_key" nullable="true" length="255" comment="Seller Names"/>
         <column xsi:type="varchar" name="meta_title" nullable="true" length="255" comment="Seller Names"/>
