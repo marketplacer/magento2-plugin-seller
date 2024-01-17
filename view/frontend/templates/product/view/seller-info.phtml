@@ -44,8 +44,18 @@ $sellerUrl = $sellerDataHelper->getSellerUrl($seller);
     <?php endif ?>
     <br/>
     <?php if ($sellerPolicies): ?>
-        <a class="policy" href="<?= $escaper->escapeUrl($sellerPolicies) ?>">
+        <div style="display: none;" data-bind="mageInit: {
+                        'Magento_Ui/js/modal/modal':{
+                            'type': 'popup',
+                            'trigger': '[data-trigger=policies]',
+                            'buttons': []
+                        }}">
+            <div class="content">
+                <?= $escaper->escapeHtml($sellerPolicies, ['p', 'ul', 'li', 'div']) ?>
+            </div>
+        </div>
+        <a href="#" data-trigger="policies">
             <?= $escaper->escapeHtml(__('Policies')) ?>
         </a>
-    <?php endif ?>
+    <?php endif; ?>
 </div>
