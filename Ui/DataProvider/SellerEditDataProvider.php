@@ -22,6 +22,11 @@ class SellerEditDataProvider extends AbstractDataProvider
     protected $collectionFactory;
 
     /**
+     * @var ?array
+     */
+    private ?array $loadedData = null;
+
+    /**
      * DataProvider constructor.
      * @param string $name
      * @param string $primaryFieldName
