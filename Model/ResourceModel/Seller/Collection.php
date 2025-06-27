@@ -75,8 +75,8 @@ class Collection extends AbstractCollection implements SellerCollectionInterface
         StoreRepositoryInterface $storeRepository,
         AttributeOptionHandler $attributeOptionHandler,
         SellerAttributeRetrieverInterface $sellerAttributeRetriever,
-        AdapterInterface $connection = null,
-        AbstractDb $resource = null
+        ?AdapterInterface $connection = null,
+        ?AbstractDb $resource = null
     ) {
         $this->storeRepository = $storeRepository;
         $this->attributeOptionHandler = $attributeOptionHandler;
